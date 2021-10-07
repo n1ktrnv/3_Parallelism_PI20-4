@@ -1,16 +1,15 @@
+from matrix import Matrix
 
 
-def element(index, A, B):
-    i, j = index
-    res = 0
-    # get a middle dimension
-    N = len(A[0]) or len(B)
-    for k in range(N):
-        res += A[i][k] * B[k][j]
-    return res
+FILENAME_BASE = 'matrix'
 
 
-matrix1 = [[1, 2], [3, 4]]
-matrix2 = [[2, 0], [1, 2]]
+def _main():
+    matrix1 = Matrix.read(f'{FILENAME_BASE}_1.csv')
+    matrix2 = Matrix.read(f'{FILENAME_BASE}_2.csv')
+    result_matrix = matrix1.multiply(matrix2, f'{FILENAME_BASE}_tmp.csv')
+    result_matrix.write(f'result_{FILENAME_BASE}_result.csv')
 
-print(element((1, 0), matrix1, matrix2))
+
+if __name__ == '__main__':
+    _main()
