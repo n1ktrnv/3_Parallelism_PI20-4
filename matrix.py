@@ -1,4 +1,5 @@
 import csv
+import random
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
@@ -109,3 +110,9 @@ class Matrix:
             self._matrix[row][i] * other._matrix[i][column]
             for i in range(other.rows)
         ]), row, column
+
+
+def sqr_random(n, min, max):
+    return Matrix(
+        [[random.randint(min, max) for _ in range(n)] for _ in range(n)]
+    )
